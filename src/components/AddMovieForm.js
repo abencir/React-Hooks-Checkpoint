@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 function AddMovieForm({ onAddMovie }) {
   // State for each input field in the form
@@ -8,11 +8,10 @@ function AddMovieForm({ onAddMovie }) {
   const [rating, setRating] = useState('');
 
   const handleSubmit = (e) => {
-    e.preventDefault(); // Prevent default form submission behavior
+    e.preventDefault(); 
 
-    // Basic validation
     if (!title || !description || !posterURL || !rating) {
-      alert('Please fill in all fields to add a movie!'); // Using alert as per instructions, but consider a modal in real apps
+      alert('Please fill in all fields to add a movie!');
       return;
     }
 

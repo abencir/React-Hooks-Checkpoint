@@ -1,4 +1,5 @@
 import React from 'react';
+
 function Filter({ onFilterChange }) {
   // Internal state for input fields
   const [titleFilter, setTitleFilter] = React.useState('');

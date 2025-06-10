@@ -1,14 +1,24 @@
-function MovieCard({ movie }) {
-  const { title, description, posterURL, rating } = movie;
+import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
 
- 
-    const displayRating = typeof rating === 'number' ? Math.min(10, Math.max(0, rating)).toFixed(1) : 'N/A';
+function MovieCard({ movie }) {
+  const { id, title, description, posterURL, rating } = movie; // Destructure 'id' as well
+  const navigate = useNavigate(); // Hook to programmatically navigate
+
+  const displayRating = typeof rating === 'number' ? Math.min(10, Math.max(0, rating)).toFixed(1) : 'N/A';
 
 
   const defaultPoster = `https://placehold.co/300x450/000000/FFFFFF?text=${encodeURIComponent(title || 'Movie')}`;
 
+  // Function to handle click on the movie card
+  const handleCardClick = () => {
+    navigate(`/movie/${id}`);
+  };
+
   return (
-    <div className="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl flex flex-col h-full">
+    <div
+      className="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl flex flex-col h-full cursor-pointer"
+      onClick={handleCardClick}
+    >
       <img
         src={posterURL}
         alt={`${title} Poster`}
